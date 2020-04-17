@@ -23,7 +23,6 @@ steps:
   inputs:
     containerRegistry: |
       innovation-acr
-    repository: $(imageName)
+    repository: $(imageName):$(tag)
     command: push
-    tags: |
-      $(tag)
+      
