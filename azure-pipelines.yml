@@ -14,6 +14,9 @@ steps:
     repository: $(imageName)
     command: build
     Dockerfile: Dockerfile
+    tags: |
+      aspnetcoreapp21
+      v1
 
 - task: Docker@2
   displayName: Push image
@@ -23,5 +26,5 @@ steps:
     repository: $(imageName)
     command: push
     tags: |
-      aspnetcoreapp31
-      v2
+      aspnetcoreapp21
+      v1
