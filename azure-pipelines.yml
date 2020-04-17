@@ -6,7 +6,7 @@ pool:
 
 variables:
   imageName: 'pipelines-dotnet-core-docker'
-  tag: '(Build.BuildId)'
+  tag: '$(Build.BuildId)'
 
 steps:
 - task: Docker@2
