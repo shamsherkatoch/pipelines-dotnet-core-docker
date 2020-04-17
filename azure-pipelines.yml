@@ -19,7 +19,7 @@ steps:
   displayName: Push image
   inputs:
     containerRegistry: |
-      $(ACR)
+      innovation-acr
     repository: $(imageName)
     command: push
     tags: |
