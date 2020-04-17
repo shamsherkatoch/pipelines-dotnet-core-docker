@@ -19,9 +19,9 @@ steps:
   displayName: Push image
   inputs:
     containerRegistry: |
-      $(dockerHub)
+      $(innovation-acr)
     repository: $(imageName)
     command: push
     tags: |
-      test1
-      test2
+      aspnetcoreapp31
+      v2
