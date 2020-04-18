@@ -8,21 +8,33 @@ variables:
   imageName: 'pipelines-dotnet-core-docker'
   tag: '$(Build.BuildId)'
 
-steps:
-- task: Docker@2
-  displayName: Build an image
-  inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: Dockerfile
-    tags: |
-      $(tag)
-
-- task: Docker@2
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        repository: $(imageName)
+        command: build
+        Dockerfile: Dockerfile
+        tags: |
+         $(tag)
+- stage: Push
   displayName: Push image
-  inputs:
-    containerRegistry: |
-      innovation-acr
-    repository: $(imageName):$(tag)
-    command: push
-      
+  jobs:
+  - job: Push
+    displayName: Push an image to ACR
+    steps:
+    - task: Docker@2
+      displayName: Push image
+      inputs:
+        containerRegistry: |
+          innovation-acr
+        repository: $(imageName):$(tag)
+        command: push
