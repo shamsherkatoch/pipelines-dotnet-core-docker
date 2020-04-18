@@ -33,5 +33,5 @@ stages:
       inputs:
         containerRegistry: |
           innovation-acr
-        repository: $(imageName):$(tag)
+        repository: $(imageName)
         command: push
