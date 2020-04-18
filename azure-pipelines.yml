@@ -4,6 +4,7 @@ trigger:
 variables:
   imageName: 'pipelines-dotnet-core-docker'
   tag: $(Build.buidid)
+  
 stages:
 - stage: Build
   displayName: Build image
